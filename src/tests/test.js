@@ -4,38 +4,40 @@
  * 11/10/21
  * Tests 
  */
-var controller = require('../controller/controller');
+var controller = require('../controller/controladorMediciones');
 var request = require('request')
-var expect = require('chai').expect;
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var assert = chai.assert;
-
+const { expect } = require('chai');
+let should = chai.should();
 chai.use(chaiHttp)
 
 
-describe("Probando obtener", () => {
-    it("Obtiene valores de la base de datos", () => {
-        request('http://localhost:8000/api/mostrarMedidas', (error, response, body) => {
-            expect(response.statusCode).to.equal(200)            
-
-        })
+describe("Probando GET", () => {
+    it("Obtiene valores de la base de datos", () => {(done) => {
+                chai.request('http://localhost:8000/api')
+                    .get('/mostrarMedidas')
+                    .end((err, res) => {
+                        expect(res.statusCode).to.equal(200)
+                        expect(res.body.mediciones.length).to.above(0)
+                        done();
+                    })
+                }
     })
 })
 
-describe("Probando agregar", () => {
-    it("Agrega valores a la base de datos", () => {
-            chai.request('http://localhost:8000/api')
+describe("Probando POST", () => {
+    it("Agrega valores a la base de datos", (done) => {
+        chai.request('http://localhost:8000/api')
             .post('/agregar')
             .send({
+                valor: 22
             })
-            .end( function(err,res){
-                assert.equal(res.status, 200)
-                /*if(res.statusCode == 204) {
-                    assert.equal(res.statusCode, 200, "No")
-                } else if (res.statusCode == 200) {
-                    assert.isOk(true, "Funciona")
-                }*/
+            .end((err, res) => {
+                expect(res.statusCode).to.equal(200)
+                expect(res.body.msj).to.equal("Documento insertado")
+                done();
             })
     })
 })

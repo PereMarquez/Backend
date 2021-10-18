@@ -16,9 +16,16 @@ var cors = require('cors');
 routerEjemplo.get('/mostrarMedidas', cors(), (req, res)=>{
     console.log(controlador.getMedicion());
     controlador.getMedicion().then(resp=>{
-        res.status(200).json(resp);
+        if(resp!=false){
+            res.status(200).json(resp);
+        }else{
+            res.status(204).send({
+                error:"error"
+            });
+        }
     }).catch(error =>{
-        res.status(204).json(error);
+        console.log("400", error);
+        res.status(400).json(error);
     })
 });
 
@@ -32,7 +39,6 @@ routerEjemplo.post('/agregar', cors(), (req, res)=>{
         console.log(resp);
         res.status(200).json(resp);
     }).catch(error =>{
-
         res.status(204).send(error);
     })
 });

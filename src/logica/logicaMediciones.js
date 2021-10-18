@@ -16,18 +16,21 @@ module.exports = class logicaMediciones{
     async postMedicion(medicion){
         var valor = medicion.getValor();
         var fecha = medicion.getFecha();
-        const newMedicion = new medicionSchema ( {valor, fecha} );
-        
         return new Promise((resolve, reject)=>{
-            newMedicion.save().then((obj)=>{
-                if(obj._id){
-                    resolve(true);
-                }else{
-                    reject(false);
-                }
-            });
-            
-        });
+            if(valor!=undefined){
+                const newMedicion = new medicionSchema ( {valor, fecha} );
+                    newMedicion.save().then((obj)=>{
+                        if(obj._id){
+                            resolve(true);
+                        }else{
+                            reject(false);
+                        }
+                    });
+                    }else{
+                        reject(false);
+                    }
+                });
+        
     }
 
     /**
@@ -38,9 +41,16 @@ module.exports = class logicaMediciones{
     async getMediciones(){
         return new Promise((resolve, reject)=>{
             medicionSchema.find().then((mediciones)=>{
-                resolve(mediciones);
+                if(mediciones.length>0){
+                    resolve(mediciones);
+                }else{
+                    reject(false);
+                }
+                
             })
-            
+            .catch(()=>{
+                reject(false);
+            })
         });
     }
 }

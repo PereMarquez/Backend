@@ -54,7 +54,9 @@ module.exports = class controladorMediciones{
                        mediciones:[]
                     });
                 }
-            });
+            }).catch(()=>{
+                resolve(false);
+            })
             
          });
      }
