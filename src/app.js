@@ -1,3 +1,9 @@
+/**
+ * Autor: Pere Márquez Barber
+ * Nombre del fichero: app.js
+ * 11/10/21
+ * Ejecuta servidor
+ */
 //Variables de lectura asignadas a puntero en memoria
 const express = require('express')
 const routerEjemplo = require('./routes/routes');
