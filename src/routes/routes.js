@@ -6,7 +6,6 @@
  */
 const {Router} = require("express");
 const routerEjemplo = Router();
-const ctrEj = require("../controller/controller");
 const controladorMediciones = require("../controller/controladorMediciones");
 const controlador = new controladorMediciones();
 
