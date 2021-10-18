@@ -8,12 +8,12 @@ const {Router} = require("express");
 const routerEjemplo = Router();
 const controladorMediciones = require("../controller/controladorMediciones");
 const controlador = new controladorMediciones();
-
+var cors = require('cors');
 /**
  * Método peticionario REST para obtener mediciones
  * get()->JSON({Number, Date})
  */
-routerEjemplo.get('/mostrarMedidas', (req, res)=>{
+routerEjemplo.get('/mostrarMedidas', cors(), (req, res)=>{
     console.log(controlador.getMedicion());
     controlador.getMedicion().then(resp=>{
         res.status(200).json(resp);
@@ -26,7 +26,7 @@ routerEjemplo.get('/mostrarMedidas', (req, res)=>{
  * Método peticionario REST para agregar mediciones
  * JSON({Number})->post()->
  */
-routerEjemplo.post('/agregar', (req, res)=>{
+routerEjemplo.post('/agregar', cors(), (req, res)=>{
  
     controlador.postMedicion(req.body.valor).then(resp=>{
         console.log(resp);

@@ -9,7 +9,8 @@ const express = require('express')
 const routerEjemplo = require('./routes/routes');
 const app = express()
 const conexionDB = require("./dbconnection");
-
+var cors = require('cors');
+app.use(cors());
 //Linea para realizar la conexión
 conexionDB();
 
