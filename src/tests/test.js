@@ -15,7 +15,7 @@ chai.use(chaiHttp)
 
 
 describe("Probando GET", () => {
-    it("Obtiene valores de la base de datos", () => {(done) => {
+    it("Obtiene valores de la base de datos", (done) => {
                 chai.request('http://localhost:8000/api')
                     .get('/mostrarMedidas')
                     .end((err, res) => {
@@ -23,8 +23,7 @@ describe("Probando GET", () => {
                         expect(res.body.mediciones.length).to.above(0)
                         done();
                     })
-                }
-    })
+                })
 })
 
 describe("Probando POST", () => {
