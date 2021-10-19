@@ -2,7 +2,7 @@
  * Autor: Pere Márquez Barber
  * Nombre del fichero: dbconnection.js
  * 11/10/21
- * Coneción a la bbdd
+ * Conexión a la bbdd
  */
 //Variables de lectura asignadas a puntero en memoria
 const mongoose = require('mongoose');

@@ -2,7 +2,7 @@
  * Autor: Pere Márquez Barber
  * Nombre del fichero: controladorMediciones.js
  * 11/10/21
- * Logica
+ * Peticionario REST, clase donde definimos funciones GET y POST
  */
  medicion = require("../Models/medicion");
  logicaMedicion = require("../logica/logicaMediciones");

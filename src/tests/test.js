@@ -2,7 +2,7 @@
  * Autor: Pere Márquez Barber
  * Nombre del fichero: test.js
  * 11/10/21
- * Tests 
+ * Archivo test mocha 
  */
 var controller = require('../controller/controladorMediciones');
 var request = require('request')
