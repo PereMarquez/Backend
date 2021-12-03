@@ -8,7 +8,7 @@ $(function obtenerTodasMediciones() {
     $.ajax({
         // hago una peticion Get a la api para obtener la lista de sensores
         type: "GET",
-        url: "http://172.20.10.9:8000/api/mostrarMedidas",
+        url: "http://172.20.10.2:8000/api/mostrarMedidas",
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
